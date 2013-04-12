@@ -7,6 +7,9 @@
 //
 
 #import "AHCAppDelegate.h"
+#import "AHCImagesPickerViewController.h"
+
+AHCImagesPickerViewController *_picker;
 
 @implementation AHCAppDelegate
 
@@ -16,7 +19,34 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    _picker = [[AHCImagesPickerViewController alloc] init];
+    _picker.delegate = self;
+    _picker.addedImageAutoSelect = NO;
+    self.window.rootViewController = _picker;
+    
     return YES;
+}
+
+- (void)didTouchedCameraButtonInImagesPickerViewController:(AHCImagesPickerViewController *)aViewController
+{
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    [aViewController presentViewController:imagePicker animated:YES completion:^{
+        
+    }];
+    imagePicker.delegate = self;
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    ALAssetsLibrary *assetLibrary = [[ALAssetsLibrary alloc] init];
+    [assetLibrary writeImageToSavedPhotosAlbum:image.CGImage metadata:nil completionBlock:^(NSURL *assetURL, NSError *error) {
+        [_picker addSelectedFile:assetURL];
+    }];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

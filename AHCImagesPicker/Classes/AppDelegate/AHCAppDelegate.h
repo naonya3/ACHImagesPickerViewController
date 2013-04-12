@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AHCImagesPickerViewController.h"
 
-@interface AHCAppDelegate : UIResponder <UIApplicationDelegate>
+@interface AHCAppDelegate : UIResponder <UIApplicationDelegate, AHCImagesPickerViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

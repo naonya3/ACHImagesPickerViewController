@@ -10,12 +10,16 @@
 		751B4CCD1715458A00669C44 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751B4CCC1715458A00669C44 /* UIKit.framework */; };
 		751B4CCF1715458A00669C44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751B4CCE1715458A00669C44 /* Foundation.framework */; };
 		751B4CD11715458A00669C44 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751B4CD01715458A00669C44 /* CoreGraphics.framework */; };
-		751B4CD71715458A00669C44 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 751B4CD51715458A00669C44 /* InfoPlist.strings */; };
-		751B4CD91715458A00669C44 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 751B4CD81715458A00669C44 /* main.m */; };
-		751B4CDD1715458A00669C44 /* AHCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 751B4CDC1715458A00669C44 /* AHCAppDelegate.m */; };
-		751B4CDF1715458A00669C44 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 751B4CDE1715458A00669C44 /* Default.png */; };
-		751B4CE11715458A00669C44 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 751B4CE01715458A00669C44 /* Default@2x.png */; };
-		751B4CE31715458A00669C44 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 751B4CE21715458A00669C44 /* Default-568h@2x.png */; };
+		751B4CF91715502F00669C44 /* AHCImagesPicker-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 751B4CEB1715502F00669C44 /* AHCImagesPicker-Info.plist */; };
+		751B4CFA1715502F00669C44 /* AHCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 751B4CF11715502F00669C44 /* AHCAppDelegate.m */; };
+		751B4CFB1715502F00669C44 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 751B4CF21715502F00669C44 /* InfoPlist.strings */; };
+		751B4CFC1715502F00669C44 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 751B4CF41715502F00669C44 /* main.m */; };
+		751B4CFD1715502F00669C44 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 751B4CF61715502F00669C44 /* Default-568h@2x.png */; };
+		751B4CFE1715502F00669C44 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 751B4CF71715502F00669C44 /* Default.png */; };
+		751B4CFF1715502F00669C44 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 751B4CF81715502F00669C44 /* Default@2x.png */; };
+		751B4D041715508300669C44 /* AHCImagesPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 751B4D031715508300669C44 /* AHCImagesPickerViewController.m */; };
+		751B4D081715618300669C44 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751B4D071715618300669C44 /* AssetsLibrary.framework */; };
+		751B4D1317159E3A00669C44 /* AHCImagesPicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 751B4D1217159E3A00669C44 /* AHCImagesPicker.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,15 +27,19 @@
 		751B4CCC1715458A00669C44 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		751B4CCE1715458A00669C44 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		751B4CD01715458A00669C44 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		751B4CD41715458A00669C44 /* AHCImagesPicker-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AHCImagesPicker-Info.plist"; sourceTree = "<group>"; };
-		751B4CD61715458A00669C44 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		751B4CD81715458A00669C44 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		751B4CDA1715458A00669C44 /* AHCImagesPicker-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AHCImagesPicker-Prefix.pch"; sourceTree = "<group>"; };
-		751B4CDB1715458A00669C44 /* AHCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AHCAppDelegate.h; sourceTree = "<group>"; };
-		751B4CDC1715458A00669C44 /* AHCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AHCAppDelegate.m; sourceTree = "<group>"; };
-		751B4CDE1715458A00669C44 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		751B4CE01715458A00669C44 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		751B4CE21715458A00669C44 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		751B4CEB1715502F00669C44 /* AHCImagesPicker-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AHCImagesPicker-Info.plist"; sourceTree = "<group>"; };
+		751B4CEC1715502F00669C44 /* AHCImagesPicker-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AHCImagesPicker-Prefix.pch"; sourceTree = "<group>"; };
+		751B4CF01715502F00669C44 /* AHCAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHCAppDelegate.h; sourceTree = "<group>"; };
+		751B4CF11715502F00669C44 /* AHCAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHCAppDelegate.m; sourceTree = "<group>"; };
+		751B4CF31715502F00669C44 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		751B4CF41715502F00669C44 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		751B4CF61715502F00669C44 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		751B4CF71715502F00669C44 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		751B4CF81715502F00669C44 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		751B4D021715508300669C44 /* AHCImagesPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHCImagesPickerViewController.h; sourceTree = "<group>"; };
+		751B4D031715508300669C44 /* AHCImagesPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHCImagesPickerViewController.m; sourceTree = "<group>"; };
+		751B4D071715618300669C44 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		751B4D1217159E3A00669C44 /* AHCImagesPicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AHCImagesPicker.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				751B4D081715618300669C44 /* AssetsLibrary.framework in Frameworks */,
 				751B4CCD1715458A00669C44 /* UIKit.framework in Frameworks */,
 				751B4CCF1715458A00669C44 /* Foundation.framework in Frameworks */,
 				751B4CD11715458A00669C44 /* CoreGraphics.framework in Frameworks */,
@@ -51,7 +60,7 @@
 		751B4CC01715458A00669C44 = {
 			isa = PBXGroup;
 			children = (
-				751B4CD21715458A00669C44 /* AHCImagesPicker */,
+				751B4CEA1715502F00669C44 /* AHCImagesPicker */,
 				751B4CCB1715458A00669C44 /* Frameworks */,
 				751B4CCA1715458A00669C44 /* Products */,
 			);
@@ -68,6 +77,7 @@
 		751B4CCB1715458A00669C44 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				751B4D071715618300669C44 /* AssetsLibrary.framework */,
 				751B4CCC1715458A00669C44 /* UIKit.framework */,
 				751B4CCE1715458A00669C44 /* Foundation.framework */,
 				751B4CD01715458A00669C44 /* CoreGraphics.framework */,
@@ -75,28 +85,63 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		751B4CD21715458A00669C44 /* AHCImagesPicker */ = {
+		751B4CEA1715502F00669C44 /* AHCImagesPicker */ = {
 			isa = PBXGroup;
 			children = (
-				751B4CDB1715458A00669C44 /* AHCAppDelegate.h */,
-				751B4CDC1715458A00669C44 /* AHCAppDelegate.m */,
-				751B4CD31715458A00669C44 /* Supporting Files */,
+				751B4D001715503900669C44 /* Support Files */,
+				751B4CED1715502F00669C44 /* Classes */,
+				751B4CF51715502F00669C44 /* Resources */,
 			);
 			path = AHCImagesPicker;
 			sourceTree = "<group>";
 		};
-		751B4CD31715458A00669C44 /* Supporting Files */ = {
+		751B4CED1715502F00669C44 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				751B4CD41715458A00669C44 /* AHCImagesPicker-Info.plist */,
-				751B4CD51715458A00669C44 /* InfoPlist.strings */,
-				751B4CD81715458A00669C44 /* main.m */,
-				751B4CDA1715458A00669C44 /* AHCImagesPicker-Prefix.pch */,
-				751B4CDE1715458A00669C44 /* Default.png */,
-				751B4CE01715458A00669C44 /* Default@2x.png */,
-				751B4CE21715458A00669C44 /* Default-568h@2x.png */,
+				751B4D011715506600669C44 /* AHCImagesPicker */,
+				751B4CEF1715502F00669C44 /* AppDelegate */,
 			);
-			name = "Supporting Files";
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		751B4CEF1715502F00669C44 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				751B4CF01715502F00669C44 /* AHCAppDelegate.h */,
+				751B4CF11715502F00669C44 /* AHCAppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		751B4CF51715502F00669C44 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				751B4D1217159E3A00669C44 /* AHCImagesPicker.bundle */,
+				751B4CF61715502F00669C44 /* Default-568h@2x.png */,
+				751B4CF71715502F00669C44 /* Default.png */,
+				751B4CF81715502F00669C44 /* Default@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		751B4D001715503900669C44 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				751B4CEB1715502F00669C44 /* AHCImagesPicker-Info.plist */,
+				751B4CEC1715502F00669C44 /* AHCImagesPicker-Prefix.pch */,
+				751B4CF21715502F00669C44 /* InfoPlist.strings */,
+				751B4CF41715502F00669C44 /* main.m */,
+			);
+			name = "Support Files";
+			sourceTree = "<group>";
+		};
+		751B4D011715506600669C44 /* AHCImagesPicker */ = {
+			isa = PBXGroup;
+			children = (
+				751B4D021715508300669C44 /* AHCImagesPickerViewController.h */,
+				751B4D031715508300669C44 /* AHCImagesPickerViewController.m */,
+			);
+			path = AHCImagesPicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,10 +196,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				751B4CD71715458A00669C44 /* InfoPlist.strings in Resources */,
-				751B4CDF1715458A00669C44 /* Default.png in Resources */,
-				751B4CE11715458A00669C44 /* Default@2x.png in Resources */,
-				751B4CE31715458A00669C44 /* Default-568h@2x.png in Resources */,
+				751B4CF91715502F00669C44 /* AHCImagesPicker-Info.plist in Resources */,
+				751B4CFB1715502F00669C44 /* InfoPlist.strings in Resources */,
+				751B4CFD1715502F00669C44 /* Default-568h@2x.png in Resources */,
+				751B4CFE1715502F00669C44 /* Default.png in Resources */,
+				751B4CFF1715502F00669C44 /* Default@2x.png in Resources */,
+				751B4D1317159E3A00669C44 /* AHCImagesPicker.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,18 +212,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				751B4CD91715458A00669C44 /* main.m in Sources */,
-				751B4CDD1715458A00669C44 /* AHCAppDelegate.m in Sources */,
+				751B4CFA1715502F00669C44 /* AHCAppDelegate.m in Sources */,
+				751B4CFC1715502F00669C44 /* main.m in Sources */,
+				751B4D041715508300669C44 /* AHCImagesPickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		751B4CD51715458A00669C44 /* InfoPlist.strings */ = {
+		751B4CF21715502F00669C44 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				751B4CD61715458A00669C44 /* en */,
+				751B4CF31715502F00669C44 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -246,6 +294,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AHCImagesPicker/AHCImagesPicker-Prefix.pch";
 				INFOPLIST_FILE = "AHCImagesPicker/AHCImagesPicker-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -257,6 +306,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AHCImagesPicker/AHCImagesPicker-Prefix.pch";
 				INFOPLIST_FILE = "AHCImagesPicker/AHCImagesPicker-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
