@@ -174,81 +174,90 @@
 
 - (void)_loadAssetsWithCompletionBlock:(void (^)(BOOL))aCompletionBlock
 {
-    _assets = [NSMutableArray array];
     
-    __weak __block typeof (_assets) weakAsset = _assets;
-    ALAssetsLibraryGroupsEnumerationResultsBlock resultBlock = ^(ALAssetsGroup *group, BOOL *stop) {
-        if (!group || *stop) {
-            
-            if (aCompletionBlock) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    aCompletionBlock(YES);
-                });
+        __weak __block typeof (_assetsLibrary) weakLibrary = _assetsLibrary;
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            NSLog(@"loc start fetch");
+            @synchronized (self) {
+                NSLog(@"lock fetch");
+                NSMutableArray *assets = [NSMutableArray array];
+                ALAssetsLibraryGroupsEnumerationResultsBlock resultBlock = ^(ALAssetsGroup *group, BOOL *stop) {
+                    if (!group || *stop) {
+                        
+                        if (aCompletionBlock) {
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                _assets = assets;
+                                aCompletionBlock(YES);
+                                NSLog(@"finish");
+                            });
+                        }
+                        
+                        return ;
+                    }
+                    [group setAssetsFilter:[ALAssetsFilter allPhotos]];
+                    [group enumerateAssetsWithOptions:NSEnumerationReverse usingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
+                        if (result) {
+                            [assets addObject:result];
+                        }else{
+                            return ;
+                        }
+                    }];
+                };
+                [weakLibrary enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:resultBlock failureBlock:^(NSError *error) {
+                    if (error) {
+                        if (aCompletionBlock) {
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                aCompletionBlock(NO);
+                            });
+                        }
+                    }
+                }];
             }
-            
-            return ;
-        }
-        [group setAssetsFilter:[ALAssetsFilter allPhotos]];
-        [group enumerateAssetsWithOptions:NSEnumerationReverse usingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
-            if (result) {
-                [weakAsset addObject:result];
-            }else{
-                return ;
-            }
-        }];
-    };
-    
-    [_assetsLibrary enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:resultBlock failureBlock:^(NSError *error) {
-        if (error) {
-            if (aCompletionBlock) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    aCompletionBlock(NO);
-                });
-            }
-        }
-    }];
+        });
 }
 
 - (void)_fetchAddedAssetsWithCompletionBlock:(void (^)(BOOL, NSArray *))aCompletionBlock
 {
-    __weak __block typeof (_assets) weakAsset = _assets;
-    __block NSMutableArray *newAsset = [NSMutableArray array];
-    __weak __block typeof (_assetsLibrary) weakLibrary = _assetsLibrary;
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        ALAssetsLibraryGroupsEnumerationResultsBlock resultBlock = ^(ALAssetsGroup *group, BOOL *stop) {
-            if (!group || *stop) {
-                
-                if (aCompletionBlock) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        aCompletionBlock(YES, newAsset);
-                    });
-                }
-                
-                return ;
-            }
-            [group setAssetsFilter:[ALAssetsFilter allPhotos]];
-            if (weakAsset.count < group.numberOfAssets) {
-                [group enumerateAssetsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(weakAsset.count, group.numberOfAssets - weakAsset.count)] options:NSEnumerationReverse usingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
-                    if (result) {
-                        [newAsset addObject:result];
-                    }else{
-                        return ;
+    @synchronized (self) {     
+        __weak __block typeof (_assets) weakAsset = _assets;
+        __block NSMutableArray *newAsset = [NSMutableArray array];
+        __weak __block typeof (_assetsLibrary) weakLibrary = _assetsLibrary;
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            ALAssetsLibraryGroupsEnumerationResultsBlock resultBlock = ^(ALAssetsGroup *group, BOOL *stop) {
+                if (!group || *stop) {
+                    
+                    if (aCompletionBlock) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            aCompletionBlock(YES, newAsset);
+                        });
                     }
-                }];
-            }
-        };
-        
-        [weakLibrary enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:resultBlock failureBlock:^(NSError *error) {
-            if (error) {
-                if (aCompletionBlock) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        aCompletionBlock(NO, nil);
-                        
-                    });
+                    
+                    return ;
                 }
-            }
-        }];
-    });
+                [group setAssetsFilter:[ALAssetsFilter allPhotos]];
+                if (weakAsset.count < group.numberOfAssets) {
+                    [group enumerateAssetsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(weakAsset.count, group.numberOfAssets - weakAsset.count)] options:NSEnumerationReverse usingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
+                        if (result) {
+                            [newAsset addObject:result];
+                        }else{
+                            return ;
+                        }
+                    }];
+                }
+            };
+            
+            [weakLibrary enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:resultBlock failureBlock:^(NSError *error) {
+                if (error) {
+                    if (aCompletionBlock) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            aCompletionBlock(NO, nil);
+                            
+                        });
+                    }
+                }
+            }];
+        });
+    }
 }
 
 - (void)_update
@@ -270,22 +279,26 @@
 
 - (BOOL)addSelectedFile:(NSURL *)aSelectedFile
 {
+
     if (self.maxSelect == 0 || _selectedFiles.count < self.maxSelect) {
-        [_selectedFiles addObject:aSelectedFile];
-        return YES;
+            [_selectedFiles addObject:aSelectedFile];
+            NSLog(@"lock start add");
+            @synchronized (self) {
+                NSLog(@"lock add");
+                for (UICollectionViewCell *cell in _collectionView.visibleCells) {
+                    if ([cell isMemberOfClass:[AHCAssetCell class]]) {
+                        ALAsset *asset = _assets[[_collectionView indexPathForCell:cell].item - ((self.useWithCamera) ? 1 : 0)];
+                        if ([asset.defaultRepresentation.url isEqual:aSelectedFile]) {
+                            ((AHCAssetCell *)cell).photoSelected = YES;
+                        }
+                    }
+                }
+                NSLog(@"finish add");
+                return YES;
+            }
     } else {
         return NO;
     }
-
-// ToDo: 追加ファイルの選択状態を変更するようにする
-//    for (UICollectionViewCell *cell in _collectionView.visibleCells) {
-//        if ([cell isMemberOfClass:[AHCAssetCell class]]) {
-//            ALAsset *asset = _assets[[_collectionView indexPathForCell:cell].item - ((self.useWithCamera) ? 1 : 0)];
-//            if ([asset.defaultRepresentation.url isEqual:aSelectedFile]) {
-//                ((AHCAssetCell *)cell).photoSelected = YES;
-//            }
-//        }
-//    }
 }
 
 #pragma mark - Event Handler
@@ -295,6 +308,8 @@
     [self _loadAssetsWithCompletionBlock:^(BOOL success) {
         [weakSelf _update];
     }];
+
+    
 
     // ToDo: iOS6のNotification keysの内容についてよく調べる
 //    if (self.addedImageAutoSelect) {
